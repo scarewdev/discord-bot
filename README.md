@@ -2,6 +2,9 @@
 
 Bu projeyi görüntülediğiniz için teşekkür ederiz.
 
+## Proje
+
+Projeyi [Glitch.com](https://glitch.com)'dan remixleyerek kullanabilirsiniz.
 
 ## Discord
 
