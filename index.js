@@ -6,7 +6,6 @@ const fs = require("fs");
 const SQLite = require("quick.db");
 const app = express();
 const client = new Discord.Client();
-const special = process.env;
 
 app.get("/site", (request, response) => {
   response.sendStatus(200);
@@ -20,9 +19,7 @@ setInterval(() => {
 
 client.komutlar = new Enmap();
 client.kullanımlar = new Enmap();
-client.müzik = new Map();
 client.zaman = new Enmap();
-client.ayar = special;
 client.veri = SQLite;
 
 fs.readdir("./events/", (hata, dosyalar) => {
@@ -48,5 +45,5 @@ fs.readdir("./komutlar/", (hata, dosyalar) => {
 });
 
 client
-  .login(special.token)
+  .login("token")
   .catch(error => console.error("[Giriş] " + error.message));
