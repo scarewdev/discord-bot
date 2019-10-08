@@ -8,7 +8,7 @@ module.exports = async (client, message) => {
 
   let i =
     (await client.veri.fetch(`${message.guild.id}.prefix`)) ||
-    client.ayar.prefix;
+    "!!";
   let prefix;
   if (i) {
     prefix = message.content.match(prefixEtiket)
@@ -17,10 +17,8 @@ module.exports = async (client, message) => {
   } else {
     prefix = message.content.match(prefixEtiket)
       ? message.content.match(prefixEtiket)[0] + " "
-      : client.ayar.prefix;
+      : "!!";
   }
-
-  if (message.content.indexOf(prefix) !== 0) return;
 
   if (message.content.indexOf(prefix) !== 0) return;
 
@@ -52,13 +50,6 @@ module.exports = async (client, message) => {
         "Bu komut yetkililerimize özel komutlardır. *erişiminiz bulunmuyor*"
       );
   }
-
-  if (client.veri.fetch(`${message.author.id}.karaliste`) == "Evet")
-    return message.channel
-      .send(
-        `Üzgünüm, bu botun kara listesinde bulunuyorsunuz. İtiraz etmek için ${client.ayar.prefix}davet yazıp destek sunucumuzdaki yetkililer ile görüşebilirsiniz.`
-      )
-      .catch(error => console.log(error.message));
 
   let komutZaman = cmd.bilgi.zaman || 0;
   let kişiZaman = client.zaman.get(message.author.id) || 0;
